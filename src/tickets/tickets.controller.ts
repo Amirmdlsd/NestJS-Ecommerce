@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Body, Patch, Param, Delete, Res, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Res, HttpStatus } from '@nestjs/common';
 import { TicketsService } from './tickets.service';
 import { CreateTicketDto } from './dto/create-ticket.dto';
-import { UpdateTicketDto } from './dto/update-ticket.dto';
 import { Response } from 'express';
 
 @Controller('tickets')
@@ -33,13 +32,13 @@ export class TicketsController {
     })
   }
 
-  @Patch(':id')
-  async update(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto, @Res() res: Response) {
-    await this.ticketsService.update(+id, updateTicketDto);
-    return res.status(HttpStatus.OK).json({
-      message: "تیکت ویرایش شد", statuc_code: HttpStatus.OK
-    })
-  }
+  // @Patch(':id')
+  // async update(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto, @Res() res: Response) {
+  //   await this.ticketsService.update(+id, updateTicketDto);
+  //   return res.status(HttpStatus.OK).json({
+  //     message: "تیکت ویرایش شد", statuc_code: HttpStatus.OK
+  //   })
+  // }
 
   @Delete(':id')
   async remove(@Param('id') id: string, @Res() res: Response) {
